@@ -1,0 +1,2 @@
+print();
+alert(localStorage.token);
