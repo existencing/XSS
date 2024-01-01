@@ -1,2 +1,0 @@
-print();
-alert(localStorage.token);
