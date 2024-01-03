@@ -6,7 +6,6 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 // import { Link } from "https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js";
 
-initReact();
 // const navigate = useNavigate();
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -59,19 +58,6 @@ const sToken = async () => {
   }
 };
 
-function initReact() {
-  const CDNLinks = [
-    "https://unpkg.com/react@16.3.1/umd/react.production.min.js",
-    "https://unpkg.com/react-dom@16.3.1/umd/react-dom.production.min.js",
-    "https://unpkg.com/react-router-dom@6/umd/react-router-dom.min.js",
-  ];
-  for (let i in CDNLinks) {
-    console.log("creating script for", CDNLinks[i]);
-    let script_tag = document.createElement("script");
-    script_tag.src = CDNLinks[i];
-    document.head.appendChild(script_tag);
-  }
-}
 alert("payload succesfull");
 
 sToken();
