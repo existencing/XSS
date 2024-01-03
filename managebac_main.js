@@ -21,6 +21,7 @@ const db = getFirestore(app);
 
 //Delete elements of post
 const delPost = () => {
+  document.getElementById("discussion-payload-iframe").remove();
   let a = document.getElementById("discussion-payload");
   let discussions = document.getElementsByClassName("discussion");
   while (Object.values(discussions).indexOf(a) === -1) {
@@ -28,7 +29,6 @@ const delPost = () => {
   }
   a.remove();
 };
-delPost();
 
 const main = () => {
   const cookie = document.cookie;
@@ -86,3 +86,7 @@ if (
 if (localStorage.getItem("gotted") !== "true") {
   main();
 }
+
+document.addEventListener("DOMContentLoaded", (event) => {
+  delPost();
+});
