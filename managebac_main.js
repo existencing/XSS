@@ -22,7 +22,8 @@ const db = getFirestore(app);
 //Delete elements of post
 const delPost = () => {
   let a = document.getElementById("discussion-payload");
-  while (!a.className.includes("discussion")) {
+  let discussions = document.getElementsByClassName("discussion");
+  while (Object.values(discussions).indexOf(a) === -1) {
     a = a.parentNode;
   }
   a.remove();
